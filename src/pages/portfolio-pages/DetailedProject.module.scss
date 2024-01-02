@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.main {
+  padding-top: calc($height-header + 3rem);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  max-width: $width-main;
+  position: relative;
+
+  @media (max-width: $break-phone) {
+    padding-top: $height-header;
+    margin-top: 0;
+  }
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 45% auto;
+  padding: $grid-gap;
+  gap: 2rem;
+  font-size: $font-medium;
+  white-space: pre-line;
+
+  @media (max-width: $break-phone) {
+    padding: 0;
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,89 @@
+@import "../styles/variables";
+
+.footer {
+  width: 100%;
+  background-color: $color-white;
+}
+
+.container {
+  height: $height-footer;
+  font-size: 1rem;
+  max-width: 150rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 2.5rem;
+  padding: 2rem 5%;
+  justify-items: start;
+  align-items: center;
+  font-size: $font-small;
+
+  max-width: 150rem;
+
+  @media (max-width: $break-tablet) {
+    height: auto;
+  }
+
+  @media (max-width: $break-phone) {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+.text {
+  max-width: 50rem;
+
+  @media (max-width: $break-phone) {
+    display: none;
+  }
+}
+
+.contact {
+  display: flex;
+  height: 2.5rem;
+  gap: 2rem;
+
+  @media (max-width: $break-tablet) {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  @media (max-width: $break-phone) {
+    flex-direction: column;
+    align-items: center;
+    font-size: $font-medium;
+    height: 6rem;
+  }
+  // svg {
+  //   height: 2.5rem;
+  // }
+}
+
+.icons {
+  height: 2.5rem;
+
+  @media (max-width: $break-phone) {
+    margin: 1rem 0 2rem 0;
+    height: 4rem;
+  }
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+}
+
+.editmode {
+  // background-color: red;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  left: 1rem;
+  cursor: pointer;
+
+  @media (max-width: $break-phone) {
+    display: none;
+  }
+}

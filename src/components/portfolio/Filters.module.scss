@@ -1,0 +1,54 @@
+@import "../../styles/variables";
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 10rem;
+  width: max-content;
+  max-width: calc(100% - 2 * $grid-gap);
+  flex-wrap: wrap;
+  transition: all 0.3s;
+  background-color: $color-white;
+  margin: 0 auto;
+  border-radius: 0 0 $border-radius $border-radius;
+  box-shadow: 0 3px 3px $color-shadow;
+  font-size: $font-medium;
+
+  @media (max-width: $break-phone) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 1rem 1rem 5rem;
+    width: 100%;
+  }
+
+  & h1 {
+    grid-column: 1/-1;
+    font-size: $font-large;
+  }
+
+  & select {
+    font-size: inherit;
+    background: none;
+    border: none;
+    border-left: 1px solid $color-grey-dark;
+    padding-left: 2rem;
+  }
+}
+
+.btn {
+  margin: 0 auto;
+  width: max-content;
+  padding: 1rem 3rem;
+  font-size: $font-medium;
+
+  & span {
+    margin-right: 1rem;
+  }
+}
+
+.hidden {
+  display: none;
+  //   transform: translateY(-100%);
+}

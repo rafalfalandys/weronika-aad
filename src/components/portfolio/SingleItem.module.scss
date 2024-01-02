@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.container {
+  height: 100%;
+  // border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  // border-radius: $border-radius-small;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255);
+    opacity: 0.1;
+    transition: all 0.4s;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  & img,
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.4s;
+
+    &:hover {
+      transform: scale(1.05);
+
+      @media (max-width: $break-tablet) {
+        transform: scale(1);
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+.projects {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+
+  @media (max-width: $break-phone) {
+    justify-content: space-around;
+  }
+}
+
+.add-project {
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1.02);
+  }
+}
+
+.confirm {
+  cursor: pointer;
+  font-weight: 600;
+  background-color: $color-grey-light;
+  padding: 1rem 2rem;
+  border-radius: 10rem;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(1.02);
+  }
+}

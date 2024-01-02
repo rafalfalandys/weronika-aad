@@ -1,0 +1,54 @@
+@import "../../../styles/variables";
+
+.text {
+  & h1 {
+    font-size: $font-large;
+    margin-bottom: 3rem;
+
+    @media (max-width: $break-phone) {
+      position: absolute;
+      top: calc($height-header + 22rem);
+      left: 0;
+      transform: translateY(-100%);
+      padding: 1rem 0;
+      color: $color-white;
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      margin: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0), $color-shadow);
+    }
+  }
+
+  @media (max-width: $break-phone) {
+    grid-row: 2;
+    padding: $grid-gap;
+  }
+
+  & p {
+    font-size: $font-medium;
+    line-height: 140%;
+  }
+}
+
+.edit-link {
+  font-size: $font-large;
+  font-weight: 700;
+  width: fit-content;
+  height: 6rem;
+  margin: 3rem auto;
+  border-radius: 10rem;
+  border: 1px solid $color-grey;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+
+  & a {
+    padding: 2rem 3rem;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 3px 3px $color-shadow;
+  }
+}

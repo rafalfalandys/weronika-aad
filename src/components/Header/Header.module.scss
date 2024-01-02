@@ -1,0 +1,119 @@
+@import "../../styles/variables";
+
+.wrapper {
+  z-index: 3;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.header {
+  display: flex;
+  padding: 0rem 10%;
+  box-shadow: 0px 4px 4px $color-shadow;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-white;
+  height: $height-header;
+  height: 6rem;
+
+  position: relative;
+  width: 100%;
+  top: 0;
+
+  a {
+    height: 100%;
+  }
+
+  @media (max-width: $break-tablet) {
+    padding: 0 10% 0 $grid-gap;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 3;
+
+  & figure {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    height: 300%;
+  }
+
+  &--text {
+    font-size: 5rem;
+    color: $color-grey-dark;
+  }
+}
+
+.nav {
+  height: 100%;
+  @media (max-width: $break-phone) {
+    display: none;
+  }
+}
+
+.hovered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  visibility: hidden;
+  opacity: 0;
+
+  &:hover,
+  .link:hover + & {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.menu__icon {
+  display: none;
+  z-index: 3;
+
+  @media (max-width: $break-phone) {
+    display: block;
+  }
+
+  &--extra {
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.nav--hideable {
+  position: absolute;
+  top: $height-header;
+  right: 0;
+  background-color: $color-white;
+  z-index: -1;
+  box-shadow: 0px 3px 3px $color-shadow;
+  width: 100%;
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 9rem 6rem;
+    font-size: 3.2rem;
+    gap: 4rem;
+  }
+
+  @media (min-width: $break-phone) {
+    display: none;
+  }
+
+  transition: all 0.5s;
+}
+
+.hidden {
+  transform: translateY(-100%);
+}

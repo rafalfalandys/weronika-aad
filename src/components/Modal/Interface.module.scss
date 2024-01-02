@@ -1,0 +1,68 @@
+@import "../../styles/variables";
+
+.dots {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  color: $color-white;
+  font-size: $font-medium;
+  width: 85%;
+}
+
+.close {
+  top: 17rem;
+  right: 3%;
+}
+
+.btn {
+  position: fixed;
+
+  transform: translateY(-50%) scale(1);
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(210, 210, 210, 0.5);
+  color: $color-grey-dark;
+  transition: all 0.2s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.arrows {
+  top: 50%;
+
+  @media (max-width: $break-phone) {
+    top: auto;
+    bottom: 16rem;
+  }
+
+  & ion-icon {
+    font-size: 32px;
+  }
+}
+
+.left {
+  left: 3%;
+}
+
+.right {
+  right: 3%;
+}
+
+.bump {
+  transform: translateY(-50%) scale(1.15);
+}
