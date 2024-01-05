@@ -17,6 +17,7 @@ import DetailedProject from "./pages/portfolio-pages/DetailedProject";
 import EditPanel, { action as editProjects } from "./pages/EditPanel";
 import EditProjectForm from "./components/edit-panel/EditProjectForm";
 import { lazy, Suspense } from "react";
+import LoginPage, { action as signIn } from "./pages/LoginPage";
 
 const Photography = lazy(() => import("./pages/portfolio-pages/Photography"));
 const Architecture = lazy(() => import("./pages/portfolio-pages/Architecture"));
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
         ),
         loader: projectsLoader,
         children: [{ path: ":projectId", element: <DetailedProject /> }],
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+        action: signIn,
       },
       {
         path: "edit-panel",

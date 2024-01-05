@@ -3,10 +3,13 @@ import styles from "./NavElements.module.scss";
 import ToggleSwitch from "../UI/ToggleSwitch";
 import { useContext } from "react";
 import ContextUI from "../../store/context-ui";
+import useFirebase from "../../hooks/use-firebase";
+import { logout } from "../../helper/firebase";
 // import { Link } from "react-router-dom";
 
 function NavElements(props) {
   const { isEnglish, editMode } = useContext(ContextUI);
+  const { user } = useFirebase();
 
   return (
     <ul className={styles.links}>
@@ -30,9 +33,14 @@ function NavElements(props) {
         {isEnglish ? "Contact" : "Kontakt"}
       </NavItem>
       {editMode && (
-        <NavItem mobile={props.mobile} linkTo="/edit-panel">
+        <NavItem mobile={props.mobile} linkTo={user ? "/edit-panel" : "/login"}>
           {isEnglish ? "Edit" : "Edycja"}
         </NavItem>
+      )}
+      {editMode && user && (
+        <span className={styles["nav-item"]} onClick={logout}>
+          {isEnglish ? "Logout" : "Wyloguj"}
+        </span>
       )}
       <ToggleSwitch homeEdition={props.homeEdition} />
     </ul>

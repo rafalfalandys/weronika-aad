@@ -10,7 +10,7 @@ function Home() {
       <main className={styles.main}>
         <div className={styles.logo}>
           <img src={logo} alt="logo" />
-          <h1 className={styles["logo--text"]}>rafa</h1>
+          <h1 className={styles["logo--text"]}>wera</h1>
         </div>
         <nav className={styles.nav}>
           <NavElements homeEdition />

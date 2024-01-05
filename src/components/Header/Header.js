@@ -15,7 +15,7 @@ function Header() {
       <figure>
         <img src={logo} alt="voronoi" />
       </figure>
-      <h1 className={styles["logo--text"]}>rafa</h1>
+      <h1 className={styles["logo--text"]}>wera</h1>
     </Link>
   );
 
