@@ -5,6 +5,7 @@ import ContextProjects from "../../store/context-projects";
 import ContextUI from "../../store/context-ui";
 import styles from "./EditProjectForm.module.scss";
 import ImagesPanel from "./ImagesPanel";
+import useFirebase from "../../hooks/use-firebase";
 
 function EditProjectForm() {
   const { projectId } = useParams();
@@ -12,6 +13,7 @@ function EditProjectForm() {
   const { curProject, curProjectNoHandler, curProjectHandler, curProjects } =
     useContext(ContextProjects);
   const { addingProjectMode, addingProjectModeHandler } = useContext(ContextUI);
+  const { user } = useFirebase();
 
   useEffect(() => {
     const projectIndex = (
@@ -127,6 +129,7 @@ function EditProjectForm() {
       <button className={styles.btn}>
         {addingProjectMode ? "Add Project" : "Confirm changes"}
       </button>
+      {user && <input name="token" readOnly hidden value={user.accessToken} />}
     </Form>
   );
 }

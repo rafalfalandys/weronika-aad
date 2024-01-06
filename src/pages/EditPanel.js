@@ -63,8 +63,8 @@ const buildImgsArr = async (data) => {
   });
 };
 
-const loadProject = async (project, method = "PATCH") => {
-  await fetch(`${URL}/projects/${project.key}.json`, {
+const loadProject = async (project, token, method = "PATCH") => {
+  await fetch(`${URL}/projects/${project.key}.json?auth=${token}`, {
     method: method,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(project),
@@ -73,6 +73,7 @@ const loadProject = async (project, method = "PATCH") => {
 
 export async function action({ request }) {
   const data = await request.formData();
+  const token = await data.get("token");
 
   // updating order of projects
   if (data.has("projects")) {
@@ -80,7 +81,7 @@ export async function action({ request }) {
 
     projects.forEach(async (project, i) => {
       const updatedProject = { ...project, order: `${i}`.padStart(2, "0") };
-      await loadProject(updatedProject);
+      await loadProject(updatedProject, token);
     });
 
     return redirect("/architecture");
@@ -103,7 +104,7 @@ export async function action({ request }) {
       images: images,
     };
 
-    await loadProject(projectData, request.method);
+    await loadProject(projectData, token, request.method);
     console.log("project loaded");
 
     if (request.method === "POST") return null;

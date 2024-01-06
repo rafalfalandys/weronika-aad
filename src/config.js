@@ -1,4 +1,5 @@
 export const URL = `https://weronika-kogut-aad-default-rtdb.europe-west1.firebasedatabase.app/`;
+// export const URL = `https://portfolio-f338a-default-rtdb.europe-west1.firebasedatabase.app/`;
 export const API_KEY = "AIzaSyA9dyaHoUFvHiLQXWvZ0UUhUQwe9yU-LGc";
 export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyA9dyaHoUFvHiLQXWvZ0UUhUQwe9yU-LGc",

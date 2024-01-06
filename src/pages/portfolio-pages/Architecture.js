@@ -25,11 +25,17 @@ function Architecture() {
 
   ////////////// BACKUP LOADER ///////////////////
   // const onClickHandler = () => {
-  //   fetch(URL + "projects-backup.json", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(loadedProjects),
-  //   });
+  //   if (user) {
+  //     loadedProjects.forEach((proj) => {
+  //       fetch(`${URL}/projects.json?auth=${user.accessToken}`, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(proj),
+  //       });
+  //     });
+  //   }
   // };
 
   // here comes a function, instead of simple array, because without useCallback VSC was screaming for dependencies in useEffect below

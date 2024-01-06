@@ -18,22 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-// // Detect auth state
-// let changeAuthHandler;
-
-// if (!changeAuthHandler) {
-//   changeAuthHandler = () => {
-//     onAuthStateChanged(auth, (user) => {
-//       console.log(user);
-//       if (user != null) {
-//       } else {
-//       }
-//     });
-//   };
-
-//   changeAuthHandler();
-// }
-
 export const login = async (user, password) => {
   await signInWithEmailAndPassword(auth, user, password);
 };

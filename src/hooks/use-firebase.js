@@ -17,20 +17,7 @@ const useFirebase = () => {
     });
 
     return unsubscribe;
-  }, []);
-
-  const signInWithEmailAndPassword = async (email, password) => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      return userCredential.user;
-    } catch (error) {
-      throw error;
-    }
-  };
+  }, [location.pathname, navigate]);
 
   const signOut = async () => {
     try {
@@ -40,7 +27,7 @@ const useFirebase = () => {
     }
   };
 
-  return { user, signInWithEmailAndPassword, signOut };
+  return { user, signOut };
 };
 
 export default useFirebase;
