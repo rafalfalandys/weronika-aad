@@ -1,25 +1,14 @@
 import { Fragment } from "react";
-import styles from "./EditPanel.module.scss";
-import Header from "../components/Header/Header";
+import styles from "./EditPhotographyPanel.module.scss";
+import Header from "../../../components/Header/Header";
 import { Outlet, redirect } from "react-router-dom";
 import { useContext } from "react";
-import ContextProjects from "../store/context-projects";
-import { useState } from "react";
-import EditProjectForm from "../components/edit-panel/EditProjectForm";
-import { URL } from "../config";
-import ProjectsList from "../components/edit-panel/ProjectsList";
-import ContextUI from "../store/context-ui";
+import { URL } from "../../../config";
+import ContextUI from "../../../store/context-ui";
 
-function EditPanel() {
-  const { curProjectHandler } = useContext(ContextProjects);
+function EditPhotographyPanel() {
   const { editMode, toggleEditMode, deletingMode, toggleDeletingMode } =
     useContext(ContextUI);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-
-  const showForm = (project) => {
-    curProjectHandler(project);
-    setIsFormVisible(true);
-  };
 
   return (
     <Fragment>
@@ -33,16 +22,13 @@ function EditPanel() {
             Delete mode: <span>{`${deletingMode ? "on" : "off"}`}</span>
           </h1>
         </div>
-        <ProjectsList showFormHandler={showForm} />
         <Outlet />
-
-        {isFormVisible && <EditProjectForm />}
       </main>
     </Fragment>
   );
 }
 
-export default EditPanel;
+export default EditPhotographyPanel;
 
 ////////////////////////////////////////////////////////
 /////////////////// action functions ///////////////////

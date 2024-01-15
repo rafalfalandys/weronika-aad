@@ -99,7 +99,7 @@ function LoginForm() {
           </button>
         )}
         {user && (
-          <Link to="/edit-panel">
+          <Link to="/edit">
             <button type="button">
               {isEnglish ? "Edit Panel" : "Panel Edycji"}
             </button>

@@ -4,7 +4,7 @@ export const textCommon = {
 };
 
 export const textsPL = {
-  logo: "rafa",
+  logo: "wera",
   aboutPage: {
     name: "Weronika Kogut",
     desc: "Magister architektury i specjalistka projektowania UX.",

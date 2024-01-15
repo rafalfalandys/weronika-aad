@@ -9,6 +9,8 @@ import { URL } from "../../config";
 import { useCallback } from "react";
 import ContextUI from "../../store/context-ui";
 import ContextProjects from "../../store/context-projects";
+import useFirebase from "../../hooks/use-firebase";
+import { photosData } from "../../store/photos";
 
 function Architecture() {
   const { isEnglish, hideModal } = useContext(ContextUI);
@@ -24,19 +26,20 @@ function Architecture() {
   const location = useLocation().pathname;
 
   ////////////// BACKUP LOADER ///////////////////
-  // const onClickHandler = () => {
-  //   if (user) {
-  //     loadedProjects.forEach((proj) => {
-  //       fetch(`${URL}/projects.json?auth=${user.accessToken}`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(proj),
-  //       });
-  //     });
-  //   }
-  // };
+  const { user } = useFirebase();
+  const onClickHandler = () => {
+    if (user) {
+      photosData.forEach((photo) => {
+        fetch(`${URL}/photos.json?auth=${user.accessToken}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(photo),
+        });
+      });
+    }
+  };
 
   // here comes a function, instead of simple array, because without useCallback VSC was screaming for dependencies in useEffect below
 
@@ -99,7 +102,7 @@ function Architecture() {
       {location === "/architecture" && (
         <main className={styles.main}>
           <Filters />
-          {/* <h1 onClick={onClickHandler}>Load backup</h1> */}
+          <h1 onClick={onClickHandler}>Load backup</h1>
           <div className={styles.tiles}>{projectCards}</div>
         </main>
       )}

@@ -34,6 +34,8 @@ const useFirebase = () => {
   const uploadFile = async (path, file) => {
     const storageRef = ref(storage, path);
 
+    console.log(storageRef);
+
     try {
       // Upload the file to Firebase Storage
       await uploadBytes(storageRef, file);

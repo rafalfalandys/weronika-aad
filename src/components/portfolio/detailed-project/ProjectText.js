@@ -81,7 +81,7 @@ function ProjectText() {
       </p>
       {editMode && (
         <div className={styles["edit-link"]}>
-          <Link to={`/edit-panel/${params.projectId}`}>Edit this project</Link>
+          <Link to={`/edit/${params.projectId}`}>Edit this project</Link>
         </div>
       )}
     </div>
