@@ -1,4 +1,4 @@
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import Footer from "../../components/Footer";
 import SingleItem from "../../components/portfolio/SingleItem";
 import styles from "./Photography.module.scss";
@@ -23,12 +23,12 @@ function Photography() {
   ));
 
   return (
-    <Fragment>
+    <>
       {isModalVisible && <Modal />}
       <Header />
       <main className={styles.tiles}>{photos}</main>
       <Footer />
-    </Fragment>
+    </>
   );
 }
 export default Photography;

@@ -1,24 +1,23 @@
-import { Fragment, useContext } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 
 import styles from "./Contact.module.scss";
-import ContextUI from "../store/context-ui";
 import LoginForm from "../components/LoginForm";
 import { login } from "../helper/firebase";
+import useText from "../hooks/use-text";
 
 function LoginPage() {
-  const { isEnglish } = useContext(ContextUI);
+  const text = useText();
 
   return (
-    <Fragment>
+    <>
       <Header />
       <main className={styles.main}>
-        <h1>{isEnglish ? "Login" : "Zaloguj się"}</h1>
+        <h1>{text.loginPage.login}</h1>
         <LoginForm />
       </main>
       <Footer />
-    </Fragment>
+    </>
   );
 }
 

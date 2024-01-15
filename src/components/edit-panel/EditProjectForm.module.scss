@@ -1,16 +1,20 @@
 @import "../../styles/variables";
 
-.form {
-  display: grid;
+.form__wrapper {
   width: 100%;
-  align-items: center;
-  grid-template-columns: 7rem 1fr 4rem 1fr;
-  font-size: inherit;
-  gap: 0.5rem;
   background-color: $color-white;
   padding: 2rem 5rem;
   border-radius: $border-radius;
   box-shadow: 0 2px 2px $color-shadow;
+  position: relative;
+}
+
+.form {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 7rem 1fr 4rem 1fr;
+  font-size: inherit;
+  gap: 0.5rem;
   font-family: inherit;
   white-space: pre-wrap;
 

@@ -113,7 +113,7 @@ export async function action({ request }) {
 
   // deleting projects
   if (request.method === "DELETE") {
-    await fetch(`${URL}/projects/${data.get("key")}.json`, {
+    await fetch(`${URL}/projects/${data.get("key")}.json?auth=${token}`, {
       method: "DELETE",
     });
     return null;

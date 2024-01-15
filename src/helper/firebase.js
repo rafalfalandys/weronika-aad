@@ -16,6 +16,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// auth
 export const auth = getAuth(app);
 
 export const login = async (user, password) => {

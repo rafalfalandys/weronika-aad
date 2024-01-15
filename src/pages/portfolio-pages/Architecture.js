@@ -1,4 +1,4 @@
-import { Fragment, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./Architecture.module.scss";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header/Header";
@@ -93,7 +93,7 @@ function Architecture() {
   ));
 
   return (
-    <Fragment>
+    <>
       <Header />
       <Outlet />
       {location === "/architecture" && (
@@ -104,7 +104,7 @@ function Architecture() {
         </main>
       )}
       <Footer />
-    </Fragment>
+    </>
   );
 }
 export default Architecture;

@@ -5,16 +5,18 @@ import { useContext } from "react";
 import ContextUI from "../../store/context-ui";
 import useFirebase from "../../hooks/use-firebase";
 import { logout } from "../../helper/firebase";
+import useText from "../../hooks/use-text";
 // import { Link } from "react-router-dom";
 
 function NavElements(props) {
-  const { isEnglish, editMode } = useContext(ContextUI);
+  const { editMode } = useContext(ContextUI);
   const { user } = useFirebase();
+  const text = useText();
 
   return (
     <ul className={styles.links}>
       <NavItem mobile={props.mobile} linkTo="/about">
-        {isEnglish ? "About" : "O mnie"}
+        {text.nav.about}
       </NavItem>
       <NavItem mobile={props.mobile} linkTo="/portfolio" hover={props.hover}>
         Porfolio
@@ -30,16 +32,16 @@ function NavElements(props) {
         </div>
       )} */}
       <NavItem mobile={props.mobile} linkTo="/contact">
-        {isEnglish ? "Contact" : "Kontakt"}
+        {text.nav.contact}
       </NavItem>
       {editMode && (
         <NavItem mobile={props.mobile} linkTo={user ? "/edit-panel" : "/login"}>
-          {isEnglish ? "Edit" : "Edycja"}
+          {text.nav.edit}
         </NavItem>
       )}
       {editMode && user && (
         <span className={styles["nav-item"]} onClick={logout}>
-          {isEnglish ? "Logout" : "Wyloguj"}
+          {text.nav.logout}
         </span>
       )}
       <ToggleSwitch homeEdition={props.homeEdition} />
