@@ -9,6 +9,7 @@ import EditProjectForm from "../../../components/edit-panel/EditProjectForm";
 import { URL } from "../../../config";
 import ProjectsList from "../../../components/edit-panel/ProjectsList";
 import ContextUI from "../../../store/context-ui";
+import { buildImgsArr } from "../../../helper/helper";
 
 function EditArchitecturePanel() {
   const { curProjectHandler } = useContext(ContextProjects);
@@ -47,21 +48,6 @@ export default EditArchitecturePanel;
 ////////////////////////////////////////////////////////
 /////////////////// action functions ///////////////////
 ////////////////////////////////////////////////////////
-
-const buildImgsArr = async (data) => {
-  const urls = data.getAll("url");
-  const types = data.getAll("type");
-  const thumbnails = data.getAll("thumbnail");
-  const names = data.getAll("name");
-  return urls.map((el, i) => {
-    return {
-      type: types[i],
-      url: el,
-      thumbnail: thumbnails[i],
-      name: names[i],
-    };
-  });
-};
 
 const loadProject = async (project, token, method = "PATCH") => {
   await fetch(`${URL}/projects/${project.key}.json?auth=${token}`, {

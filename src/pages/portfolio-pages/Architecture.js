@@ -9,8 +9,8 @@ import { URL } from "../../config";
 import { useCallback } from "react";
 import ContextUI from "../../store/context-ui";
 import ContextProjects from "../../store/context-projects";
-import useFirebase from "../../hooks/use-firebase";
-import { photosData } from "../../store/photos";
+// import useFirebase from "../../hooks/use-firebase";
+// import { photosData } from "../../store/photos";
 
 function Architecture() {
   const { isEnglish, hideModal } = useContext(ContextUI);
@@ -26,20 +26,20 @@ function Architecture() {
   const location = useLocation().pathname;
 
   ////////////// BACKUP LOADER ///////////////////
-  const { user } = useFirebase();
-  const onClickHandler = () => {
-    if (user) {
-      photosData.forEach((photo) => {
-        fetch(`${URL}/photos.json?auth=${user.accessToken}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(photo),
-        });
-      });
-    }
-  };
+  // const { user } = useFirebase();
+  // const onClickHandler = () => {
+  //   if (user) {
+  //     photosData.forEach((photo) => {
+  //       fetch(`${URL}/photos.json?auth=${user.accessToken}`, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(photo),
+  //       });
+  //     });
+  //   }
+  // };
 
   // here comes a function, instead of simple array, because without useCallback VSC was screaming for dependencies in useEffect below
 
@@ -102,7 +102,7 @@ function Architecture() {
       {location === "/architecture" && (
         <main className={styles.main}>
           <Filters />
-          <h1 onClick={onClickHandler}>Load backup</h1>
+          {/* <h1 onClick={onClickHandler}>Load backup</h1> */}
           <div className={styles.tiles}>{projectCards}</div>
         </main>
       )}
@@ -123,5 +123,6 @@ export async function loader() {
   for (const key in data) {
     projectsArr.push({ ...data[key], key });
   }
+  console.log(projectsArr);
   return projectsArr;
 }

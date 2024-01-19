@@ -25,7 +25,7 @@ function NavElements(props) {
         {text.nav.contact}
       </NavItem>
       {editMode && (
-        <NavItem mobile={props.mobile} linkTo={user ? "/edit-panel" : "/login"}>
+        <NavItem mobile={props.mobile} linkTo={user ? "/edit" : "/login"}>
           {text.nav.edit}
         </NavItem>
       )}

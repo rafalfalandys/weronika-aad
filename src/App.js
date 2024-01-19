@@ -17,7 +17,11 @@ import EditProjectForm from "./components/edit-panel/EditProjectForm";
 import { lazy, Suspense } from "react";
 import LoginPage, { action as signIn } from "./pages/LoginPage";
 import EditArchitecturePanel from "./pages/edit-panel/architecture/EditArchitecturePanel";
-import EditPhotographyPanel from "./pages/edit-panel/photography/EditPhotographyPanel";
+import EditPhotographyPanel, {
+  action as editPhotos,
+} from "./pages/edit-panel/photography/EditPhotographyPanel";
+import EditPage from "./pages/edit-panel/EditPage";
+import { loader as photosLoader } from "./pages/portfolio-pages/Photography";
 
 const Photography = lazy(() => import("./pages/portfolio-pages/Photography"));
 const Architecture = lazy(() => import("./pages/portfolio-pages/Architecture"));
@@ -44,6 +48,7 @@ const router = createBrowserRouter([
             <Photography />
           </Suspense>
         ),
+        loader: photosLoader,
       },
       {
         path: "architecture",
@@ -63,7 +68,11 @@ const router = createBrowserRouter([
       },
       {
         path: "edit",
-        element: <EditPanel />,
+        element: <EditPage />,
+      },
+      {
+        path: "edit/architecture",
+        element: <EditArchitecturePanel />,
         loader: projectsLoader,
         action: editProjects,
         children: [
@@ -73,27 +82,13 @@ const router = createBrowserRouter([
             loader: projectsLoader,
             action: editProjects,
           },
-          // {
-          //   path: "architecture",
-          //   element: <EditArchitecturePanel />,
-          //   loader: projectsLoader,
-          //   action: editProjects,
-          //   children: [
-          //     {
-          //       path: ":projectId",
-          //       element: <EditProjectForm />,
-          //       loader: projectsLoader,
-          //       action: editProjects,
-          //     },
-          //   ],
-          // },
-          // {
-          //   path: "photography",
-          //   element: <EditPhotographyPanel />,
-          //   loader: projectsLoader,
-          //   action: editProjects,
-          // },
         ],
+      },
+      {
+        path: "edit/photography",
+        element: <EditPhotographyPanel />,
+        // loader: projectsLoader,
+        action: editPhotos,
       },
     ],
   },
