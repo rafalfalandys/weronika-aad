@@ -138,7 +138,9 @@ function EditProjectForm() {
           <input name="token" readOnly hidden value={user.accessToken} />
         )}
       </Form>
-      <UploadImgForm />
+      <div className={styles.uploadImgForm}>
+        <UploadImgForm />
+      </div>
     </div>
   );
 }

@@ -16,13 +16,13 @@ function EditPage() {
       <main className={styles.main}>
         <Link to="architecture">
           <BigCard
-            url={projectsData[3].images[0].url}
+            url={projectsData[4].images[0].url}
             text={text.portfolioPage.architecture}
           />
         </Link>
         <Link to="photography">
           <BigCard
-            url={photosData[10].url}
+            url={photosData[0].url}
             text={text.portfolioPage.photography}
           />
         </Link>

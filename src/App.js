@@ -10,18 +10,14 @@ import Contact, { action as sendMessage } from "./pages/Contact";
 import Home from "./pages/Home";
 import Portfolio from "./pages/portfolio-pages/Portfolio";
 import DetailedProject from "./pages/portfolio-pages/DetailedProject";
-import EditPanel, {
-  action as editProjects,
-} from "./pages/edit-panel/architecture/EditArchitecturePanel";
+import { action as editProjects } from "./pages/edit-panel/architecture/EditArchitecturePanel";
 import EditProjectForm from "./components/edit-panel/EditProjectForm";
 import { lazy, Suspense } from "react";
 import LoginPage, { action as signIn } from "./pages/LoginPage";
 import EditArchitecturePanel from "./pages/edit-panel/architecture/EditArchitecturePanel";
-import EditPhotographyPanel, {
-  action as editPhotos,
-} from "./pages/edit-panel/photography/EditPhotographyPanel";
+import EditPhotographyPanel from "./pages/edit-panel/photography/EditPhotographyPanel";
 import EditPage from "./pages/edit-panel/EditPage";
-import { loader as photosLoader } from "./pages/portfolio-pages/Photography";
+import { loadPhotos, updatePhotos } from "./api/api";
 
 const Photography = lazy(() => import("./pages/portfolio-pages/Photography"));
 const Architecture = lazy(() => import("./pages/portfolio-pages/Architecture"));
@@ -48,7 +44,7 @@ const router = createBrowserRouter([
             <Photography />
           </Suspense>
         ),
-        loader: photosLoader,
+        loader: loadPhotos,
       },
       {
         path: "architecture",
@@ -87,8 +83,8 @@ const router = createBrowserRouter([
       {
         path: "edit/photography",
         element: <EditPhotographyPanel />,
-        // loader: projectsLoader,
-        action: editPhotos,
+        loader: loadPhotos,
+        action: updatePhotos,
       },
     ],
   },

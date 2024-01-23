@@ -123,6 +123,6 @@ export async function loader() {
   for (const key in data) {
     projectsArr.push({ ...data[key], key });
   }
-  console.log(projectsArr);
+
   return projectsArr;
 }

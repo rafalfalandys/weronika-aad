@@ -1,18 +1,24 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import styles from "./EditPhotographyPanel.module.scss";
 import Header from "../../../components/Header/Header";
-import { Form } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import { useContext } from "react";
-import { URL } from "../../../config";
 import ContextUI from "../../../store/context-ui";
 import ImagesPanel from "../../../components/edit-panel/ImagesPanel";
-import { buildImgsArr } from "../../../helper/helper";
 import useFirebase from "../../../hooks/use-firebase";
+import ContextProjects from "../../../store/context-projects";
+import UploadImgForm from "../../../components/edit-panel/UploadImgForm";
 
 function EditPhotographyPanel() {
   const { editMode, toggleEditMode, deletingMode, toggleDeletingMode } =
     useContext(ContextUI);
+  const { curImagesHandler } = useContext(ContextProjects);
   const { user } = useFirebase();
+  const photosData = useLoaderData();
+
+  useEffect(() => {
+    curImagesHandler(photosData.photos);
+  }, [curImagesHandler, photosData]);
 
   return (
     <Fragment>
@@ -26,39 +32,24 @@ function EditPhotographyPanel() {
             Delete mode: <span>{`${deletingMode ? "on" : "off"}`}</span>
           </h1>
         </div>
-        <Form method="post">
-          <ImagesPanel />
-          <button type="submit">Wyślij</button>
-          {user && (
-            <input name="token" readOnly hidden value={user.accessToken} />
-          )}
-        </Form>
+        <div className={styles["form__wrapper"]}>
+          <Form method="post" className={styles.form}>
+            <ImagesPanel />
+            <button type="submit" className={styles.btn}>
+              Wyślij
+            </button>
+            {user && (
+              <input name="token" readOnly hidden value={user.accessToken} />
+            )}
+            <input name="key" readOnly hidden value={photosData.photosKey} />
+          </Form>
+          <div className={styles.upload}>
+            <UploadImgForm />
+          </div>
+        </div>
       </main>
     </Fragment>
   );
 }
 
 export default EditPhotographyPanel;
-
-////////////////////////////////////////////////////////
-/////////////////// action functions ///////////////////
-////////////////////////////////////////////////////////
-
-const updatePhotos = async (photos, token) => {
-  await fetch(`${URL}/photos.json?auth=${token}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(photos),
-  });
-};
-
-export async function action({ request }) {
-  const data = await request.formData();
-  const token = await data.get("token");
-
-  const images = await buildImgsArr(data);
-
-  updatePhotos(images, token);
-
-  return null;
-}
